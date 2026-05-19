@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
@@ -9,7 +10,6 @@ import {
 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
-import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 
 const navItems = [
@@ -75,6 +75,8 @@ function NavLinks({ onClose }: { onClose?: () => void }) {
 }
 
 export function AdminNav() {
+  const [mobileOpen, setMobileOpen] = useState(false)
+
   return (
     <>
       {/* Desktop sidebar */}
@@ -84,7 +86,7 @@ export function AdminNav() {
 
       {/* Mobile: top bar + sheet drawer */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white border-b h-14 flex items-center px-4">
-        <Sheet>
+        <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger
             className="inline-flex items-center justify-center rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
             data-testid="mobile-menu-button"
@@ -92,7 +94,7 @@ export function AdminNav() {
             <Menu className="h-5 w-5" />
           </SheetTrigger>
           <SheetContent side="left" className="w-56 p-0" data-testid="mobile-nav-drawer">
-            <NavLinks />
+            <NavLinks onClose={() => setMobileOpen(false)} />
           </SheetContent>
         </Sheet>
         <span className="ml-3 text-lg font-bold" style={{ color: '#e91e8c' }}>beauty.</span>
