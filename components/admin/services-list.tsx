@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Switch } from '@/components/ui/switch'
 import { Pencil, Trash2, Clock, RefreshCw } from 'lucide-react'
-import { ServiceForm } from './service-form'
+import { ServiceForm, CATEGORIES } from './service-form'
 import { toggleServiceActive, deleteService } from '@/app/admin/services/actions'
 import { formatPrice, getCurrency } from '@/lib/currency'
 
@@ -32,6 +32,9 @@ export function ServicesList({ services, country }: ServicesListProps) {
   const [showNewForm, setShowNewForm] = useState(false)
   const [isPending, startTransition] = useTransition()
   const currency = getCurrency(country)
+
+  const categoryLabel = (value: string) =>
+    CATEGORIES.find((c) => c.value === value)?.label ?? value
 
   const categories = [...new Set(services.map((s) => s.category))]
 
@@ -90,7 +93,7 @@ export function ServicesList({ services, country }: ServicesListProps) {
       ) : (
         <Button
           onClick={() => setShowNewForm(true)}
-          className="bg-pink-600 hover:bg-pink-700 text-white"
+          className="bg-pink-600 hover:bg-pink-700 text-white w-full sm:w-auto"
         >
           + Dodaj uslugu
         </Button>
@@ -107,8 +110,8 @@ export function ServicesList({ services, country }: ServicesListProps) {
 
       {categories.map((cat) => (
         <div key={cat}>
-          <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3 capitalize">
-            {cat}
+          <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
+            {categoryLabel(cat)}
           </h3>
           <div className="space-y-2">
             {services
@@ -116,7 +119,7 @@ export function ServicesList({ services, country }: ServicesListProps) {
               .map((service) => (
                 <Card key={service.id} className={!service.is_active ? 'opacity-60' : ''}>
                   <CardContent className="p-4">
-                    <div className="flex items-start justify-between gap-3">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
                           <p className="font-medium text-sm">{service.name}</p>
@@ -125,11 +128,11 @@ export function ServicesList({ services, country }: ServicesListProps) {
                           )}
                         </div>
                         {service.description && (
-                          <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">
+                          <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">
                             {service.description}
                           </p>
                         )}
-                        <div className="flex items-center gap-3 mt-1.5 text-xs text-muted-foreground">
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5 text-xs text-muted-foreground">
                           <span className="flex items-center gap-1">
                             <Clock className="h-3 w-3" />
                             {service.duration_minutes} min
@@ -146,7 +149,7 @@ export function ServicesList({ services, country }: ServicesListProps) {
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-2 shrink-0">
+                      <div className="flex items-center gap-2 shrink-0 self-end sm:self-start">
                         <Switch
                           checked={service.is_active}
                           onCheckedChange={() => handleToggle(service.id, service.is_active)}

@@ -19,6 +19,8 @@ const CATEGORIES = [
   { value: 'ostalo', label: 'Ostalo' },
 ]
 
+export { CATEGORIES }
+
 const DURATIONS = [
   { value: '15', label: '15 min' },
   { value: '30', label: '30 min' },
@@ -92,7 +94,7 @@ export function ServiceForm({ service, currencySymbol = 'din', onDone }: Service
         <div className="space-y-1.5">
           <Label htmlFor="category">Kategorija *</Label>
           <Select value={category} onValueChange={(v) => setCategory(v ?? 'manikir')}>
-            <SelectTrigger id="category">
+            <SelectTrigger id="category" className="w-full">
               <SelectValue>
                 {CATEGORIES.find((c) => c.value === category)?.label ?? 'Izaberi kategoriju'}
               </SelectValue>
@@ -164,11 +166,11 @@ export function ServiceForm({ service, currencySymbol = 'din', onDone }: Service
         </div>
       </div>
 
-      <div className="flex gap-2 pt-2">
-        <Button type="submit" disabled={isPending} className="bg-pink-600 hover:bg-pink-700 text-white">
+      <div className="flex flex-col sm:flex-row gap-2 pt-2">
+        <Button type="submit" disabled={isPending} className="bg-pink-600 hover:bg-pink-700 text-white w-full sm:w-auto">
           {isPending ? 'Čuvanje...' : service ? 'Sačuvaj izmene' : 'Dodaj uslugu'}
         </Button>
-        <Button type="button" variant="outline" onClick={onDone} disabled={isPending}>
+        <Button type="button" variant="outline" onClick={onDone} disabled={isPending} className="w-full sm:w-auto">
           Otkaži
         </Button>
       </div>

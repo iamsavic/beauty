@@ -99,9 +99,6 @@ export function AdminNav() {
         </Sheet>
         <span className="ml-3 text-lg font-bold" style={{ color: '#e91e8c' }}>beauty.</span>
       </div>
-
-      {/* Spacer for mobile top bar */}
-      <div className="lg:hidden h-14 w-full" />
     </>
   )
 }

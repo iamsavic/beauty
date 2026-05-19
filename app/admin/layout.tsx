@@ -13,9 +13,9 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   if (!allowedRoles.includes(role ?? '')) redirect('/unauthorized')
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-gray-50 lg:flex">
       <AdminNav />
-      <main className="flex-1 min-w-0 p-4 md:p-6 lg:p-8">
+      <main className="flex-1 w-full min-w-0 p-4 max-lg:pt-[calc(3.5rem+1rem)] md:p-6 lg:p-8">
         {children}
       </main>
     </div>
