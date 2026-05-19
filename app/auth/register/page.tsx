@@ -9,7 +9,9 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { toast } from 'sonner'
+import { SUPPORTED_COUNTRIES, getCurrency } from '@/lib/currency'
 
 type AccountType = 'salon' | 'client'
 
@@ -18,6 +20,7 @@ export default function RegisterPage() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [country, setCountry] = useState('RS')
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 
@@ -34,6 +37,7 @@ export default function RegisterPage() {
           full_name: name,
           role: accountType === 'salon' ? 'org_admin' : 'client',
           account_type: accountType,
+          country: accountType === 'salon' ? country : null,
         },
         emailRedirectTo: `${window.location.origin}/auth/callback`,
       },
@@ -46,7 +50,7 @@ export default function RegisterPage() {
     }
 
     if (accountType === 'salon') {
-      toast.success('Nalog kreiran! Provjerite email za potvrdu.')
+      toast.success('Nalog kreiran! Proverite email za potvrdu.')
       router.push('/admin/dashboard')
     } else {
       toast.success('Nalog kreiran!')
@@ -96,6 +100,27 @@ export default function RegisterPage() {
                 autoComplete="email"
               />
             </div>
+            {accountType === 'salon' && (
+              <div className="space-y-1.5">
+                <Label htmlFor="country">Zemlja poslovanja</Label>
+                <Select value={country} onValueChange={(v) => setCountry(v ?? 'RS')}>
+                  <SelectTrigger id="country">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {SUPPORTED_COUNTRIES.map((c) => (
+                      <SelectItem key={c.code} value={c.code}>
+                        <span className="mr-2">{c.flag}</span>{c.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <p className="text-xs text-muted-foreground">
+                  Valuta: <strong>{getCurrency(country).code} ({getCurrency(country).symbol})</strong>
+                </p>
+              </div>
+            )}
+
             <div className="space-y-1.5">
               <Label htmlFor="password">Lozinka</Label>
               <Input

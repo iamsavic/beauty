@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { Star, MapPin, Clock, Link2, ArrowRight } from 'lucide-react'
+import { getCurrency, formatPrice } from '@/lib/currency'
 
 interface SalonLandingProps {
   org: {
@@ -46,11 +47,13 @@ interface SalonLandingProps {
     cover_image_url?: string | null
     logo_url?: string | null
     instagram_url?: string | null
+    country?: string | null
   } | null
   avgRating: number | null
 }
 
 export function SalonLanding({ org, settings, avgRating }: SalonLandingProps) {
+  const currency = getCurrency(settings?.country)
   const primaryColor = settings?.primary_color ?? '#e91e8c'
   const activeServices = org.services?.filter((s) => s.is_active) ?? []
   const galleryItems = org.gallery_items?.filter((g) => g.is_active).slice(0, 8) ?? []
@@ -183,7 +186,7 @@ export function SalonLanding({ org, settings, avgRating }: SalonLandingProps) {
                           </div>
                           <div className="text-right">
                             <p className="font-bold text-base" style={{ color: primaryColor }}>
-                              {service.price} KM
+                              {formatPrice(service.price, currency)}
                             </p>
                           </div>
                         </CardContent>

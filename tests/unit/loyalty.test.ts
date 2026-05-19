@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { calculateLoyaltyPoints, canRedeemReward, pointsToDiscount } from '@/lib/loyalty'
 
 describe('Loyalty sistem', () => {
-  it('dodjeljuje ispravne bodove za uslugu', () => {
+  it('dodeljuje ispravne bodove za uslugu', () => {
     expect(calculateLoyaltyPoints({ servicePrice: 50, pointsPerKM: 1 })).toBe(50)
     expect(calculateLoyaltyPoints({ servicePrice: 50, pointsPerKM: 2 })).toBe(100)
     expect(calculateLoyaltyPoints({ servicePrice: 35, pointsPerKM: 1 })).toBe(35)

@@ -46,6 +46,9 @@ export interface Database {
           review_request_enabled: boolean
           onboarding_completed: boolean
           onboarding_steps: Json
+          country: string
+          currency: string
+          currency_symbol: string
           created_at: string
           updated_at: string
         }

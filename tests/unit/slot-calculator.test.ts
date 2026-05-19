@@ -49,7 +49,7 @@ describe('calculateAvailableSlots', () => {
     expect(times).toContain('11:00')
   })
 
-  it('ne vraća slotove koji ne staju u radno vrijeme', () => {
+  it('ne vraća slotove koji ne staju u radno vreme', () => {
     const slots = getAvailableSlots({
       date: new Date('2030-06-10'),
       workingHours: { start: '09:00', end: '10:00' },

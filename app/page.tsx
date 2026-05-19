@@ -18,7 +18,7 @@ const features = [
   {
     icon: ShieldCheck,
     title: 'No-show zaštita',
-    description: 'Depoziti i automatske politike otkazivanja štite tvoje radno vrijeme.',
+    description: 'Depoziti i automatske politike otkazivanja štite tvoje radno vreme.',
   },
   {
     icon: TrendingUp,
@@ -28,11 +28,11 @@ const features = [
   {
     icon: Users,
     title: 'Tim & Rasporedi',
-    description: 'Upravljaj cijelim timom, slobodnim danima i uslugama na jednom mjestu.',
+    description: 'Upravljaj celim timom, slobodnim danima i uslugama na jednom mestu.',
   },
   {
     icon: Star,
-    title: 'Reviews & Povjerenje',
+    title: 'Reviews & Poverenje',
     description: 'Automatski tražite recenzije i gradite online reputaciju.',
   },
 ]
@@ -71,7 +71,7 @@ export default function HomePage() {
           <span style={{ color: '#e91e8c' }}>Neka booking radi za tebe.</span>
         </h1>
         <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl">
-          Booking link za Instagram bio, automatski podsjetnici, depoziti i klijentski profili —
+          Booking link za Instagram bio, automatski podsetnici, depoziti i klijentski profili —
           sve što solo tehničarki ili salonu treba da napuni kalendar i zadrži klijentice.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-3">
@@ -92,7 +92,7 @@ export default function HomePage() {
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold text-center mb-4">Sve što trebaš, ništa što ne trebaš</h2>
           <p className="text-center text-muted-foreground mb-12 max-w-xl mx-auto">
-            Polovina vrijednosti je u tome da neko rezerviše brže.
+            Polovina vrednosti je u tome da neko rezerviše brže.
             Druga polovina je u tome da se klijentkinja vrati bez dodatnog truda.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -37,7 +37,7 @@ export default async function SalonPage({ params }: Props) {
       organization_settings (
         primary_color, accent_color, background_color, text_color,
         font_family, button_style, cover_image_url, logo_url,
-        instagram_url, google_business_url, payment_enabled
+        instagram_url, google_business_url, payment_enabled, country
       ),
       locations ( id, name, address, city ),
       services ( id, name, description, category, duration_minutes, price, image_url, repeat_cycle_days, is_active ),

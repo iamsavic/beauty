@@ -85,13 +85,11 @@ export function AdminNav() {
       {/* Mobile: top bar + sheet drawer */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white border-b h-14 flex items-center px-4">
         <Sheet>
-          <SheetTrigger>
-            <button
-              className="inline-flex items-center justify-center rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
-              data-testid="mobile-menu-button"
-            >
-              <Menu className="h-5 w-5" />
-            </button>
+          <SheetTrigger
+            className="inline-flex items-center justify-center rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+            data-testid="mobile-menu-button"
+          >
+            <Menu className="h-5 w-5" />
           </SheetTrigger>
           <SheetContent side="left" className="w-56 p-0" data-testid="mobile-nav-drawer">
             <NavLinks />

@@ -28,7 +28,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="bs" className={inter.variable} suppressHydrationWarning>
-      <body className="bg-background text-foreground font-sans antialiased">
+        <body className="bg-background text-foreground font-sans antialiased" suppressHydrationWarning>
         {children}
         <Toaster richColors position="top-center" />
       </body>
