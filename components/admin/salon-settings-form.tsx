@@ -64,9 +64,13 @@ export function SalonSettingsForm({ organizationId, initialValues }: SalonSettin
           <div className="space-y-2">
             <Label htmlFor="country">Zemlja</Label>
               <Select value={country} onValueChange={(v) => setCountry(v ?? 'RS')}>
-              <SelectTrigger id="country">
-                <SelectValue placeholder="Izaberi zemlju" />
-              </SelectTrigger>
+                  <SelectTrigger id="country">
+                    <SelectValue>
+                      {SUPPORTED_COUNTRIES.find((c) => c.code === country)
+                        ? `${SUPPORTED_COUNTRIES.find((c) => c.code === country)!.flag} ${SUPPORTED_COUNTRIES.find((c) => c.code === country)!.name}`
+                        : 'Izaberi zemlju'}
+                    </SelectValue>
+                  </SelectTrigger>
               <SelectContent>
                 {SUPPORTED_COUNTRIES.map((c) => (
                   <SelectItem key={c.code} value={c.code}>

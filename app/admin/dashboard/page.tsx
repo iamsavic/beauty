@@ -11,8 +11,8 @@ export const metadata: Metadata = { title: 'Dashboard' }
 const ONBOARDING_STEPS = [
   { id: 'profile', label: 'Dodaj informacije o salonu', path: '/admin/settings' },
   { id: 'theme', label: 'Postavi vizuelni identitet', path: '/admin/settings/theme' },
-  { id: 'service', label: 'Dodaj prvu uslugu', path: '/admin/services/new' },
-  { id: 'worker', label: 'Dodaj prvog radnika', path: '/admin/staff/new' },
+  { id: 'service', label: 'Dodaj prvu uslugu', path: '/admin/services' },
+  { id: 'worker', label: 'Dodaj prvog radnika', path: '/admin/staff' },
   { id: 'notifications', label: 'Podesi notifikacije', path: '/admin/settings/notifications' },
   { id: 'payments', label: 'Postavi politiku plaćanja', path: '/admin/settings/payments' },
   { id: 'gallery', label: 'Dodaj prvu sliku u galeriju', path: '/admin/gallery' },

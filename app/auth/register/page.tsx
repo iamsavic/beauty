@@ -105,7 +105,11 @@ export default function RegisterPage() {
                 <Label htmlFor="country">Zemlja poslovanja</Label>
                 <Select value={country} onValueChange={(v) => setCountry(v ?? 'RS')}>
                   <SelectTrigger id="country">
-                    <SelectValue />
+                    <SelectValue>
+                      {SUPPORTED_COUNTRIES.find((c) => c.code === country)
+                        ? `${SUPPORTED_COUNTRIES.find((c) => c.code === country)!.flag} ${SUPPORTED_COUNTRIES.find((c) => c.code === country)!.name}`
+                        : 'Izaberi zemlju'}
+                    </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
                     {SUPPORTED_COUNTRIES.map((c) => (

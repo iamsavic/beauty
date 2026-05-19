@@ -93,7 +93,9 @@ export function ServiceForm({ service, currencySymbol = 'din', onDone }: Service
           <Label htmlFor="category">Kategorija *</Label>
           <Select value={category} onValueChange={(v) => setCategory(v ?? 'manikir')}>
             <SelectTrigger id="category">
-              <SelectValue />
+              <SelectValue>
+                {CATEGORIES.find((c) => c.value === category)?.label ?? 'Izaberi kategoriju'}
+              </SelectValue>
             </SelectTrigger>
             <SelectContent>
               {CATEGORIES.map((c) => (
@@ -107,7 +109,9 @@ export function ServiceForm({ service, currencySymbol = 'din', onDone }: Service
           <Label htmlFor="duration">Trajanje *</Label>
           <Select value={duration} onValueChange={(v) => setDuration(v ?? '60')}>
             <SelectTrigger id="duration">
-              <SelectValue />
+              <SelectValue>
+                {DURATIONS.find((d) => d.value === duration)?.label ?? 'Izaberi trajanje'}
+              </SelectValue>
             </SelectTrigger>
             <SelectContent>
               {DURATIONS.map((d) => (
